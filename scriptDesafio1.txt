@@ -1,0 +1,25 @@
+CREATE DATABASE LibraryDbz;
+GO
+USE LibraryDbz;
+GO
+CREATE TABLE Autores (
+    AutorID INT PRIMARY KEY IDENTITY(1,1),
+    Nombre NVARCHAR(100) NOT NULL,
+    Apellido NVARCHAR(100) NOT NULL
+);
+GO
+CREATE TABLE Categorias (
+    CategoriaID INT PRIMARY KEY IDENTITY(1,1),
+    Nombre NVARCHAR(100) NOT NULL
+);
+GO
+CREATE TABLE Libros (
+    LibroID INT PRIMARY KEY IDENTITY(1,1),
+    Titulo NVARCHAR(200) NOT NULL,
+    FechaPublicacion DATE NOT NULL,
+    AutorID INT NOT NULL,
+    CategoriaID INT NOT NULL,
+    FOREIGN KEY (AutorID) REFERENCES Autores(AutorID),
+    FOREIGN KEY (CategoriaID) REFERENCES Categorias(CategoriaID)
+);
+GO
